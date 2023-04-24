@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Optigo - solution de gestion des interventions</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#2d89ef">
+  <meta name="theme-color" content="#ffffff">
+
+  <%= stylesheet_link_tag('application', media: 'all') %>
+  <%= stylesheet_link_tag('devise', media: 'all') %>
+
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+
+  <% if cookies[:locale] == 'fr' %>
+    <%= link_to('EN', "#{new_user_session_path}?locale=en", class: 'language-switcher') %>
+  <% else %>
+    <%= link_to('FR', "#{new_user_session_path}?locale=fr", class: 'language-switcher') %>
+  <% end %>
+
+  <header>
+    <div class="justify-content-center">
+      <%= image_tag("logo-parfait-menage.svg", class: "logo") %>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="main-content">
+      <%= yield %>
+    </div>
+  </div>
+
+</body>
+</html>

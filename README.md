@@ -1,24 +1,57 @@
-# README
+# Parfait Menage App
+Manage house cleaning, account statement for Parfait Menage
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Contributing
+The engine has the following dependencies:
 
-Things you may want to cover:
+## +++ Setup DOCKER
 
-* Ruby version
+### - database.yml, enter the desired database connection : local, staging or production
 
-* System dependencies
+### - Add your IP into Authorize IP on server in parfaitmenage_app and parfaitmenage-crm (connect with ssh)
+* parfaitmenage_app : parfaitmenage_app/current/config/application.yml
+* parfaitmenage-crm : parfaitmenage-crm/current/.env
 
-* Configuration
+### - Restart puma on both projects
+***Terminal***
+* bundle exec cap staging puma:stop
+* bundle exec cap staging puma:start
 
-* Database creation
+### - Docker-compose
+* Run all 'docker-compose'
 
-* Database initialization
+## --- Setup DOCKER
 
-* How to run the test suite
+* Ruby version = ruby-2.5.0
+* Gemset = parfait_menage
+## Install ruby
+    rvm install 2.5.0
 
-* Services (job queues, cache servers, search engines, etc.)
+## Create gemset
+    rvm use 2.5.0@parfait_menage --create --default
 
-* Deployment instructions
+## Install bundler
+    gem install bundler
 
-* ...
+## Compile gems
+    bundle install
+
+## Create local DB
+    rake db:create
+
+## Migrate local DB
+    rake db:migrate
+
+## Compile libraries from `porlier/client` directory
+    yarn install
+
+## Build the admin panel from `porlier/client` directory
+    yarn build:development
+
+## Notes
+- Avant de commencer à développer :
+    - `yarn install` dans ***./client*** pour installer les packages frontend.  
+    - Faire le setup du plugin ***eslint***.
+- Avant de faire un ***pull request*** :
+    - S'assurer qu'il n'y a pas de ***specs*** qui échouent.
+    - Exécuter `yarn eslint` pour s'assurer que le ***js*** est optimal.

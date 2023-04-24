@@ -1,0 +1,14 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/client/node_modules/
+      - /app/log/
+    environment:
+      RAILS_ENV: development
+#      RAILS_LOG_TO_STDOUT: true
+    entrypoint: ./entrypoint.sh

@@ -1,0 +1,1 @@
+ActionMailer::Base.register_interceptor(MyMailerInterceptor) unless Rails.env.production? || ENV['BYPASS_MAIL_INTERCEPTOR_FOR_LIVE_TEST']

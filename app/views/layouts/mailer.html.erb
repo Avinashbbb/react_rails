@@ -1,13 +1,51 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <style>
-      /* Email styles need to be inline */
-    </style>
-  </head>
-
-  <body>
-    <%= yield %>
-  </body>
+<head>
+  <meta name="viewport" content="width=device-width" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <%= stylesheet_link_tag('mail', media: 'all') %>
+</head>
+<body>
+<table border="0" cellpadding="0" cellspacing="0" class="body">
+  <tr>
+    <td>&nbsp;</td>
+    <td class="container">
+      <div class="content">
+        <table class="main">
+          <tr>
+            <td class="wrapper">
+              <table border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td align="center">
+                    <%#= image_tag("mail/", class: "logo") %>
+                  </td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>
+                    <%= yield %>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+        <div class="footer">
+          <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td class="content-block">
+                <span class="apple-link"><a href="https://parfaitmenage.net">ParfaitMenage</a></span>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+</body>
 </html>
+

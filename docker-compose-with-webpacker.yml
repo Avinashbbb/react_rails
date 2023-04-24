@@ -1,0 +1,25 @@
+version: '3'
+services:
+  webpacker:
+    build: .
+    entrypoint: ./webpack_entrypoint.sh
+    volumes:
+      - .:/app
+      - /app/client/node_modules/
+      - /app/log/
+    ports:
+      - "3035:3035"
+  web2:
+    build: .
+    entrypoint: ./entrypoint.sh
+    ports:
+      - "3001:3000"
+    volumes:
+      - .:/app
+      - /app/log/
+    depends_on:
+      - webpacker
+    environment:
+      RAILS_ENV: development
+      RAILS_LOG_TO_STDOUT: true
+

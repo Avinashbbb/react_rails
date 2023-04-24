@@ -1,0 +1,28 @@
+<div class="card">
+  <div class="card-header">
+    <h2><%= t('devise.passwords.new.forgot_your_password')%></h2>
+  </div>
+  <div class="card-content">
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= devise_error_messages! %>
+
+      <% flash.each do |key, value| %>
+        <% key = key == 'notice' ? 'success' : key %>
+        <% key = key == 'alert' ? 'danger' : key %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit t('devise.passwords.new.send_me_reset_password_instructions'), class: "primary" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="card-footer">
+    <%= render "devise/shared/links" %>
+  </div>
+</div>

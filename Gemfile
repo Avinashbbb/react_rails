@@ -1,51 +1,82 @@
-source "https://rubygems.org"
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+source 'https://rubygems.org'
 
-ruby "3.2.2"
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  "https://github.com/#{repo_name}.git"
+end
 
-# Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0.4", ">= 7.0.4.3"
+#gem 'accounting_adapter', path: './accounting_adapter'
+gem 'accounting_adapter', git: 'git@github.com:CodeBoxxTechSchool/accounting_adapter.git', branch: 'parfaitmenage'
+gem 'paysafe', git: 'git@github.com:groupefungo/paysafe_sdk_ruby.git'
+# gem 'paysafe', path: '../paysafe_sdk_ruby'
 
-gem "sprockets-rails"
-gem "puma", "~> 5.0"
-gem "importmap-rails"
-gem "turbo-rails"
-gem "stimulus-rails"
-gem "jbuilder"
-gem "mysql2"
+#gem 'optigo', path: './optigo'
+gem 'optigo', git: 'git@github.com:groupefungo/optigo.git', branch: 'avinash'
 
+gem 'aws-sdk-s3'
+#gem 'bootsnap', require: false
+gem 'cancan'
+gem 'devise', '~> 4.4.3'
+gem 'devise_token_auth'
+gem 'doorkeeper', '5.0.2'
+gem 'doorkeeper-i18n'
+gem 'figaro'
+gem 'geocoder'
+gem 'jbuilder', '~> 2.5'
+gem 'mysql2', '< 0.5'
+gem 'paperclip'
+gem 'paper_trail'
+gem 'puma', '~> 4.3.12'
+gem 'rack-cors', require: 'rack/cors'
+gem 'rails', '~> 5.1.5'
+gem 'rails_admin', '~> 1.3'
+gem 'rails_admin-i18n'
+gem 'rails-i18n', '~> 5.1'
+gem 'recurrence'
+gem 'rolify'
+gem 'sass-rails', '~> 5.0'
+gem 'sea_otter',  git: 'git@github.com:groupefungo/sea_otter'
+gem 'time_difference'
+gem 'turbolinks', '~> 5'
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'uglifier', '>= 1.3.0'
+gem 'whenever'
+gem 'blazer'
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+#gem 'libv8', '~> 7.0'
+# gem 'mini_racer', '0.2.4'
 
-# Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", require: false
-
-# Use Sass to process CSS
-# gem "sassc-rails"
-
-# Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+## peer dependencies from optigo
+# gem 'lead_it_core_api', path: '../lead_it_core_api'
+# gem 'lead_it_core_api', git: 'git@github.com:groupefungo/lead_it_core_api.git'
+# gem 't140m_google_api_client', git: 'git@github.com:groupefungo/t140m_google_api_client', branch: 'rails_5'
+gem 'tim_contactable', git: 'git@github.com:groupefungo/tim_contactable', branch: 'rails_5'
 
 group :development, :test do
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'letter_opener'
 end
 
 group :development do
-  # Use console on exceptions pages [https://github.com/rails/web-console]
-  gem "web-console"
-
-  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
-  # gem "rack-mini-profiler"
-
-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem "spring"
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rvm'
+  gem 'capistrano3-puma', git: "https://github.com/seuros/capistrano-puma", tag: 'v4.0.0'
+  gem 'listen'
+  gem 'net-ssh'
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'sshkit'
+  #gem 'web-console', '>= 3.3.0'
+  gem 'rb-readline'
 end
 
-group :test do
-  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara"
-  gem "selenium-webdriver"
-  gem "webdrivers"
+group :staging, :production do
+  gem 'exception_notification'
+  gem 'exception_notification-rake', '~> 0.3.0'
+  gem 'slack-notifier'
 end
+
+gem 'mimemagic', '0.3.9'
+gem 'bigdecimal', '~> 1.4.3'

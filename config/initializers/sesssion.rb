@@ -1,0 +1,1 @@
+ParfaitMenageBackend::Application.config.session_store :cookie_store, key: '_parfait_menage_session'

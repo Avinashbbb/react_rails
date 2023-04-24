@@ -1,7 +1,10 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+ActiveRecord::Base.transaction do
+  %w(super_admin admin).each do |name|
+    Role.create(name: name)
+  end
+
+  user = User.new(email: 'parfait_menage@fungo.ca', password: 'texmex2000', first_name: 'John', last_name: 'Smith')
+  user.add_role(:super_admin)
+  
+  user.save!
+end                                             
